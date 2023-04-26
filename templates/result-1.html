@@ -1,0 +1,132 @@
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>IPL SCORE PREDICTOR</title>
+        <body>
+          <nav>
+     <label class="logo">IPL SCORE PREDICTION</label>
+    <ul>
+      <li><a href="{{ url_for('report') }}">VISUALIZE</a></li>
+      
+    </ul>
+  </nav>
+  <style>
+  * {
+
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+  }
+body{
+  font-family: montserrat;
+  background: #355C7D;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #C06C84, #6C5B7B, #355C7D);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #C06C84, #6C5B7B, #355C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  }
+
+  nav {
+    background: rgba(238, 157, 6, 0.87);
+    height: 48px;
+    width: 100%;
+  }
+  .logo{
+    color: white;
+    font-size: 25px;
+    list-style: 40px;
+    padding-left: 1rem;
+    font-weight: bold;
+    margin-top: 30px;
+
+    
+  }
+  nav ul{
+    float: right;
+    margin-right: 10px;
+
+  }
+  nav ul li {
+    display: inline-block;
+    line-height: 55px;
+    margin: 0 5px;
+
+  }
+  nav ul li a{
+    color: white;
+    font-size: 17px;
+    text-transform: uppercase;
+
+  }
+  
+       </style> 
+    </head>
+    <body>
+<style>
+
+h1, h2{
+  text-align:center;
+}
+
+h2{
+  color:rgba(50, 207, 255, 0.8);
+  font-family: 'Anton', sans-serif;
+  color:#1ecf0e;
+}
+h1{
+  color: deepskyblue;
+}
+
+.ml6 {
+  position: relative;
+  font-weight: 700;
+  font-size: 2.7em;
+  padding-top: 60px;
+}
+
+.ml6 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 50px;
+  padding-right: 0.05em;
+  padding-bottom: 0.1em;
+  overflow: hidden;
+}
+
+.ml6 .letter {
+  display: inline-block;
+  line-height: 1em;
+}
+</style>
+<br><br>
+<h1 class="scorepredict">IPL Score Predicted By ML Model</h1>
+<br>
+
+			<!-- Result -->
+			<h2 class="ml6">
+  <span class="dr">
+    <span class="letters">The Batting Team can Score : {{ lower_limit }} to {{ upper_limit }} Runs </span>
+  </span>
+</h2>
+
+
+
+
+
+            
+
+        <style>
+          .r{
+            text-align: center;
+          }
+          .dr{
+            font-family: 'Times New Roman', Times, serif;
+          }
+
+</style>
+
+
+
+    </body>
+</html>

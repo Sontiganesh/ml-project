@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=1, initial-scale=1.0">
+  <link rel="style.css" alt="stylesheets">
+  <title>IPL-SCORE PREDICTION</title>
+</head>
+<body>
+  <nav>
+    <label class="logo">IPL SCORE PREDICTION</label>
+    <ul>
+      <li><a href="{{ url_for('report') }}">VISUALIZE</a></li>
+      
+    </ul>
+  </nav>
+  <style>
+  * {
+
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+  }
+  body{
+    font-family: montserrat;
+    background: #355C7D;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #C06C84, #6C5B7B, #355C7D);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #C06C84, #6C5B7B, #355C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  }
+  nav{
+    background: rgba(238, 157, 6, 0.87);
+    height: 48px;
+    width: 100%;
+    border-radius: 1px;
+  }
+  label.logo{
+    color: white;
+    font-size: 25px;
+    list-style: 80px;
+    padding: 2px;
+    font-weight: bold;
+    padding-top: 20px;
+    
+  }
+  nav ul{
+    float: right;
+    margin-right: 20px;
+
+  }
+  nav ul li {
+    display: inline-block;
+    line-height: 55px;
+    margin: 0 5px;
+
+  }
+  nav ul li a{
+    color: white;
+    font-size: 17px;
+    text-transform: uppercase;
+
+  }
+  
+       </style> 
+            <!-- Prediction Form -->
+          
+            <div class='div2'>
+                <form action="{{ url_for('predict') }}" method="POST" onsubmit="return checkForm(this);">
+                    <!-- Batting Team Dropdown -->
+                    <select class="drop" name="batting-team" id="batting-team">
+                        <option value="none">--- Select a Batting team ---</option>
+                        <option value="Mumbai Indians">Mumbai Indians</option>
+                        <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                        <option value="Chennai Super Kings">Chennai Super Kings</option>
+                        <option value="Rajasthan Royals">Rajasthan Royals</option>
+                        <option value="Kings XI Punjab">Kings XI Punjab </option>
+                        <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                        <option value="Delhi Daredevils">Delhi Daredevils</option>
+                        <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+                      
+                    </select><br></div>
+                    <!-- Bowling Team Dropdown -->
+                    <div class="div4">
+                    <select class="drop" name="bowling-team" id="bowling-team">
+                        <option value="none">--- Select a Bowling team ---</option>
+                        <option value="Mumbai Indians">Mumbai Indians</option>
+                        <option value="Kolkata Knight Riders">Kolkata Knight Riders</option>
+                        <option value="Chennai Super Kings">Chennai Super Kings</option>
+                        <option value="Rajasthan Royals">Rajasthan Royals</option>
+                        <option value="Kings XI Punjab">Kings XI Punjab</option>
+                        <option value="Royal Challengers Bangalore">Royal Challengers Bangalore</option>
+                        <option value="Delhi Daredevils">Delhi Daredevils </option>
+                        <option value="Sunrisers Hyderabad">Sunrisers Hyderabad</option>
+      
+                      </select>
+                    </select><br></div>
+                    <div class="div5">
+                    <input class="form-input" type="text" name="overs" required="required" placeholder="Overs (>= 5.0) eg. 7.2" id="ip4"><br></div>
+                    <div class="div6">
+                    <input class="form-input" type="text" name="runs" required="required" placeholder="Runs eg. 64" id="ip4"><br></container></div>
+                    <div class="div7">
+                    <input class="form-input" type="text" name="wickets" required="required" placeholder="Wickets eg. 4" id="ip4"><br></div>
+                    <div class="div8">
+                    <input class="form-input" type="text" name="runs_in_prev_5" required="required" placeholder="previous 5 Overs Runs eg.42" id="ip4"><br></div>
+                    <div class="div9">
+                    <input class="form-input" type="text" name="wickets_in_prev_5" required="required" placeholder="previous 5 Overs Wickets" id="ip4"><br></div>
+       <div class="button">
+			<input type="submit" class="myButton" value="Predict Score">
+<br><br><br>
+       </div>
+      </form>
+
+<!-- JavaScript code -->
+<script>
+  var enteredBattingTeam = ''; /* global variable */
+  
+  var checkForm = function(form) {
+    var battingTeam = form.elements['batting-team'].value;
+    var bowlingTeam = form.elements['bowling-team'].value;
+
+    if (battingTeam === bowlingTeam) {
+      alert('Batting and bowling team cannot be the same');
+      return false;
+    }
+
+    if (battingTeam === enteredBattingTeam) {
+      alert('You have already selected the same batting team');
+      return false;
+    } else {
+      enteredBattingTeam = battingTeam;
+      return true;
+    }
+  };
+</script>
+  
+       <style>
+        .drop{
+          text-align: center;
+        }
+        .form-input{
+          text-align: center;
+        }
+        .drop{
+          
+          width: 45em;
+          height: 50px;
+          
+        }
+        .dro{
+          width: 45em;
+          height: 50px;
+          padding-top:10px;
+        }
+        .form-input{
+          width: 45em;
+          height: 50px;
+          
+
+        }
+        .myButton{
+          width:15em;
+          height: 30px;
+          background-color: rgb(255, 0, 221);
+          border-radius: 20px;
+          transition: 5sec;
+          
+          
+        
+        }
+        .div2{
+          padding-left: 24rem;
+          padding-top: 100px;
+        }
+        .button{
+          padding-left: 37rem;
+          padding-top: 50px;
+        }
+        .div4{
+          padding-left: 24rem;
+          padding-top: 15px;
+        }
+        .div5{
+          padding-left: 24rem;
+          padding-top: 15px;
+
+        }
+        .div6{
+          padding-left: 24rem;
+          padding-top: 15px;
+        }
+        .div7{
+          padding-left: 24rem;
+          padding-top: 15px;
+
+        }
+        .div8{
+          padding-left: 24rem;
+          padding-top: 15px;
+        }
+        .div9{
+          padding-left: 24rem;
+          padding-top: 15px;
+        }
+</style>
+<div class='footer'>
+           <div class="footer">
+
+        <script>
+        // Wrap every letter in a span
+var textWrapper = document.querySelector('.ml6 .letters');
+textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
+
+anime.timeline({loop: true})
+  .add({
+    targets: '.ml6 .letter',
+    translateY: ["1.1em", 0],
+    translateZ: 0,
+    duration: 750,
+    delay: (el, i) => 50 * i
+  }).add({
+    targets: '.ml6',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1000
+  });
+  </script>
+
+   </body>
+</html>
